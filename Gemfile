@@ -43,4 +43,3 @@ group :development, :test do
 
   gem 'rubocop'
 end
-
