@@ -8,6 +8,8 @@ end
 
 gem 'puma'
 
+gem 'twitter'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
@@ -55,4 +57,10 @@ end
 
 group :development do
   gem 'pry-rails'
+  gem 'dotenv-heroku', require: false
+  gem 'dotenv-rails'
+end
+
+group :test do
+  gem 'simplecov', require: false
 end
