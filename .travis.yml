@@ -1,11 +1,20 @@
 language: ruby
 rvm:
-  - 2.2.1
-bundler_args: --binstubs --without 'production' --retry=3 --jobs=3
+- 2.2.1
+bundler_args: "--binstubs --without 'production' --retry=3 --jobs=3"
 addons:
-  postgresql: "9.3"
+  postgresql: '9.3'
 before_script:
-  - psql -c 'create database beer_thirty_test;' -U postgres
+- psql -c 'create database beer_thirty_test;' -U postgres
 script: bundle exec rake
 sudo: false
 cache: bundler
+deploy:
+  provider: heroku
+  api_key:
+    secure: H4qUC7LikKDga3IkItG/9Ge+4Y6XAvdxih1dnfQ2X3as9LhSYMNMsCpHLH/Nv9X9oWVk//zX70egXZddsIOfuiY4JAOEcoe7SXLjj/xemXtXixfZdfHcoKMhsmAbtaXWq2r4u/wlRBqXiDQ4HIMUEvBwRkSTNFD9nZEsFHIF9KU=
+  app:
+    master: beer-thirty
+  on:
+    repo: cwest/beer-thirty
+  run: "rake db:migrate"
