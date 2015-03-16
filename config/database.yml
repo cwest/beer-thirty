@@ -10,7 +10,4 @@ test:
   <<: *default
   database: beer_thirty_test
 production:
-  <<: *default
-  database: beer_thirty_production
-  username: beer_thirty
-  password: <%= ENV['BEER_THIRTY_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL']
