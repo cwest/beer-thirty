@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - 2.2.1
+bundler_args: --binstubs --without 'production' --retry=3 --jobs=3
+addons:
+  postgresql: "9.3"
+before_script:
+  - psql -c 'create database beer_thirty_test;' -U postgres
+script: bundle exec rake
+sudo: false
+cache: bundler
